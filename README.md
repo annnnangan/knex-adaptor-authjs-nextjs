@@ -1,8 +1,3 @@
-# Create custom knex adaptor for Next Auth
-
-Tags: Authentication, Next.js, NextAuth
-Status: Not started
-
 # Background
 
 Hoping to use [auth.js](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
