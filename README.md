@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Create custom knex adaptor for Next Auth
 
-## Getting Started
+Tags: Authentication, Next.js, NextAuth
+Status: Not started
 
-First, run the development server:
+# Background
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Hoping to use [auth.js](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Understand that auth.js provide flexibility to create our [own custom adaptor](https://next-auth.js.org/tutorials/creating-a-database-adapter) if there is no official one, it is still a bit confusing on how to do it until I found this [package](https://github.com/travishorn/authjs-knexjs-adapter/tree/master) provided by travishorn and his detailed explanation [here](https://travishorn.com/introducing-the-knex-adapter-for-authjs). I took the source code and modify the adaptor to fit in the naming convention that I am currently using for my database.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Also, I made a simple register and login form component. When user logins, they will be redirected to the settings page and the session will be dropped in the cookies. Users cannot go back to register or login page when they successfully login. The settings is built following [this tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4) and modified a bit to fit in the tech that I am using.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Built With
 
-## Learn More
+- Next.js v15
+- NextAuth.js v5
+- Knex
 
-To learn more about Next.js, take a look at the following resources:
+# Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the project
+2. Run `npm install`
+3. Create an `.env.local` file with below variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```jsx
+   POSTGRES_DB=
+   POSTGRES_USER=
+   POSTGRES_PASSWORD=
+   POSTGRES_HOST=
+   NEXTAUTH_SECRET=
+   ```
 
-## Deploy on Vercel
+   The `NEXTAUTH_SECRET` is created by typing this command `openssl rand -base64 33` in your terminal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Run `npm run data` to create the all the tables needed. There might be an error stating there is no seed file. No worry about this. It doesn’t affect the current project.
+5. Run `npm run dev` to start the project
+6. Go to [`localhost:3000/auth/register`](http://localhost:3000/auth/register) to register the account
+7. Go to `localhsot:3000/auth/login` to login and you will be redirected to settings page after login
+8. Right click insepctor > application, you could find the cookie with `authjs.session-token`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Resources
+
+- Original [package source code](https://github.com/travishorn/authjs-knexjs-adapter/tree/master) and [detailed explanation](https://travishorn.com/introducing-the-knex-adapter-for-authjs) from travishorn
+- [Next Auth v5 tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4)
