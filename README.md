@@ -11,6 +11,7 @@ Also, I made a simple register and login form component. When user logins, they 
 - Next.js v15
 - NextAuth.js v5
 - Knex
+- Shadcn UI
 
 # Getting Started
 
@@ -28,7 +29,7 @@ Also, I made a simple register and login form component. When user logins, they 
 
    The `NEXTAUTH_SECRET` is created by typing this command `openssl rand -base64 33` in your terminal.
 
-4. Run `npm run data` to create the all the tables needed. There might be an error stating there is no seed file. No worry about this. It doesn’t affect the current project.
+4. Run `npm run data` to create all the tables needed. There might be an error stating there is no seed file. No worry about this. It doesn’t affect the current project.
 5. Run `npm run dev` to start the project
 6. Go to [`localhost:3000/auth/register`](http://localhost:3000/auth/register) to register the account
 7. Go to `localhsot:3000/auth/login` to login and you will be redirected to settings page after login
