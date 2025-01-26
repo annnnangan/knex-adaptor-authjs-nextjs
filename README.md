@@ -1,6 +1,6 @@
 # Background
 
-Hoping to use [auth.js](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
+Hoping to use [next auth](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
 
 Understand that auth.js provide flexibility to create our [own custom adaptor](https://next-auth.js.org/tutorials/creating-a-database-adapter) if there is no official one, it is still a bit confusing on how to do it until I found this [package](https://github.com/travishorn/authjs-knexjs-adapter/tree/master) provided by travishorn and his detailed explanation [here](https://travishorn.com/introducing-the-knex-adapter-for-authjs). I took the source code and modify the adaptor to fit in the naming convention that I am currently using for my database.
 
