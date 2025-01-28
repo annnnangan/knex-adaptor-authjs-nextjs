@@ -1,13 +1,8 @@
-# Create custom knex adaptor for Next Auth
-
-Tags: Authentication, Next.js, NextAuth
-Status: Not started
-
 # Background
 
-Hoping to use [auth.js](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
+Hoping to use [next auth](https://authjs.dev/) for authentication for my [Next.js](https://nextjs.org/) side project, I find that there is no official adaptor for [Knex](https://knexjs.org/), which is the tool that I am using to interact with my postgresql database.
 
-Understand that auth.js provide flexibility to create our [own custom adaptor](https://next-auth.js.org/tutorials/creating-a-database-adapter) if there is no official one, it is still a bit confusing on how to do it until I found this [package](https://github.com/travishorn/authjs-knexjs-adapter/tree/master) provided by travishorn and his detailed explanation [here](https://travishorn.com/introducing-the-knex-adapter-for-authjs). I took the source code and modify the adaptor to fit in the naming convention that I am currently using for my database.
+Understand that next auth provide flexibility to create our [own custom adaptor](https://next-auth.js.org/tutorials/creating-a-database-adapter) if there is no official one, it is still a bit confusing on how to do it until I found this [package](https://github.com/travishorn/authjs-knexjs-adapter/tree/master) provided by travishorn and his detailed explanation [here](https://travishorn.com/introducing-the-knex-adapter-for-authjs). I took the source code and modify the adaptor to fit in the naming convention that I am currently using for my database.
 
 Also, I made a simple register and login form component. When user logins, they will be redirected to the settings page and the session will be dropped in the cookies. Users cannot go back to register or login page when they successfully login. The settings is built following [this tutorial](https://www.youtube.com/watch?v=1MTyCvS05V4) and modified a bit to fit in the tech that I am using.
 
@@ -16,6 +11,7 @@ Also, I made a simple register and login form component. When user logins, they 
 - Next.js v15
 - NextAuth.js v5
 - Knex
+- Shadcn UI
 
 # Getting Started
 
@@ -33,7 +29,7 @@ Also, I made a simple register and login form component. When user logins, they 
 
    The `NEXTAUTH_SECRET` is created by typing this command `openssl rand -base64 33` in your terminal.
 
-4. Run `npm run data` to create the all the tables needed. There might be an error stating there is no seed file. No worry about this. It doesn’t affect the current project.
+4. Run `npm run data` to create all the tables needed. There might be an error stating there is no seed file. No worry about this. It doesn’t affect the current project.
 5. Run `npm run dev` to start the project
 6. Go to [`localhost:3000/auth/register`](http://localhost:3000/auth/register) to register the account
 7. Go to `localhsot:3000/auth/login` to login and you will be redirected to settings page after login
